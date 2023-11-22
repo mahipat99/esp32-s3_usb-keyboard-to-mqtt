@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "D:/repositories/platform.io"
+		},
+		{
+			"name": "ESP32-KeyboardStreamer",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
