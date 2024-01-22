@@ -14,6 +14,8 @@ This project demonstrates the integration of an ESP32 S3-based OTG keyboard with
 - [Changing MQTT Credentials](#changing-mqtt-credentials)
 - [Optional: Changing Topic](#optional-changing-topic)
 - [Flashing the Binaries](#flashing-the-binaries)
+  - [Using ESP Flash Download Tool](#using-esp-flash-download-tool)
+  - [Using esptool.py](#using-esptoolpy)
 - [Usage](#usage)
 
 ## Prerequisites
@@ -70,7 +72,7 @@ Replace `"keypads/lr-numpad01/action"` with your desired MQTT topic.
 
 ## Flashing the Binaries
 
-After compiling the code, you will obtain three binary files. To flash these binaries to specific addresses on your ESP32, follow these steps:
+### Using ESP Flash Download Tool
 
 1. Download the [ESP Flash Download Tool](https://www.espressif.com/sites/default/files/tools/flash_download_tool_3.9.5.zip) and extract the contents.
 
@@ -85,9 +87,29 @@ After compiling the code, you will obtain three binary files. To flash these bin
 
 5. Put your ESP32 into flashing mode.
 
-6. Set the COM port, and then click the "Erase" followed by the "Start" button in the ESP Flash Download Tool to initiate the flashing of the binaries
+6. Set the COM port, and then click the "Erase" followed by the "Start" button  in the ESP Flash Download Tool to initiate the flashing of the binaries
 
 7. Once the flashing process is complete, restart your ESP32.
+
+### Using esptool.py
+
+1. Open a terminal.
+
+2. Navigate to the project directory.
+
+3. Run the following command to erase the flash:
+
+   ```bash
+   esptool.py -p COM10 erase_flash
+   ```
+
+4. Run the following command to flash the binaries:
+
+   ```bash
+   esptool.py -p COM10 write_flash --flash_mode dio --flash_size 8MB 0x0 bootloader.bin 0x8000 partitions.bin 0x10000 firmware.bin
+   ```
+
+5. Once the flashing process is complete, restart your ESP32.
 
 ## Usage
 
