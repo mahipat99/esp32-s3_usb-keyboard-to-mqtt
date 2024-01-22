@@ -71,7 +71,7 @@ Optionally, you can change the MQTT topic by modifying the following line:
 Replace `"keypads/lr-numpad01/action"` with your desired MQTT topic.
 
 ## Flashing the Binaries
-
+After compiling the code, you will obtain three binary files. To flash these binaries to specific addresses on your ESP32, follow these steps:
 ### Using ESP Flash Download Tool
 
 1. Download the [ESP Flash Download Tool](https://www.espressif.com/sites/default/files/tools/flash_download_tool_3.9.5.zip) and extract the contents.
