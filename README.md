@@ -106,7 +106,7 @@ After compiling the code, you will obtain three binary files. To flash these bin
 4. Run the following command to flash the binaries:
 
    ```bash
-   esptool.py -p COM10 write_flash --flash_mode dio --flash_size 8MB 0x0 bootloader.bin 0x8000 partitions.bin 0x10000 firmware.bin
+   esptool.py -p COM10 --baud 921600 write_flash --flash_mode dio --flash_freq 40m --flash_size detect 0x0 bootloader.bin 0x8000 partitions.bin 0x10000 firmware.bin
    ```
 
 5. Once the flashing process is complete, restart your ESP32.
