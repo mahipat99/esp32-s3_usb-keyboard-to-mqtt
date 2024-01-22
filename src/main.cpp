@@ -2,7 +2,7 @@
 #include <usb/usb_host.h>
 #include "show_desc.hpp"
 #include "usbhhelp.hpp"
-#define LOG_LOCAL_LEVEL ESP_LOG_VERBOSE
+//#define LOG_LOCAL_LEVEL ESP_LOG_VERBOSE
 #include "esp_log.h"
 #include <WiFi.h>
 extern "C"
@@ -11,14 +11,12 @@ extern "C"
 #include "freertos/timers.h"
 }
 #include <AsyncMqttClient.h>
+#include <WiFiManager.h>
 
-#define WIFI_SSID "*************************"
-#define WIFI_PASSWORD "*************************"
+#define MQTT_USERNAME "your-mqtt-username"
+#define MQTT_PASSWORD "your-mqtt-password"
 
-#define MQTT_USERNAME "*************************"
-#define MQTT_PASSWORD "*************************"
-
-#define MQTT_HOST IPAddress(0, 0, 0, 0)
+#define MQTT_HOST IPAddress(192, 168, 1, 1)
 #define MQTT_PORT 1883
 
 #define MAX_SIM_KEYS 6
@@ -46,8 +44,9 @@ char sendBuffer[100];
 
 void connectToWifi()
 {
-  ESP_LOGI("", "Connecting to Wi-Fi...");
-  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  WiFiManager wifiManager;
+  wifiManager.autoConnect("ESPS3-OTG-KB");
+  ESP_LOGI("", "Connected to Wi-Fi");
 }
 
 void connectToMqtt()
